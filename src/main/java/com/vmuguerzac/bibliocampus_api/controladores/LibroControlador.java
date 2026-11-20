@@ -31,7 +31,4 @@ public class LibroControlador {
     public Libro obtenerPorId(@PathVariable("id") Long id) {
         return libroServicio.obtenerPorId(id);
     }
-    
-    
-    
 }

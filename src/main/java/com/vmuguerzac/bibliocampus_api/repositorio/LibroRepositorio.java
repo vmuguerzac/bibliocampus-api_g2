@@ -13,6 +13,8 @@ public interface LibroRepositorio extends JpaRepository<Libro, Long>, LibroBusqu
     List<Libro> findAllByOrderByTituloAsc();
     List<Libro> findTop3ByOrderByCopiasDisponiblesDesc();
 
+    long countByCopiasDisponibles(int copias);
+
     @Query("SELECT DISTINCT l.categoria FROM Libro l ORDER BY l.categoria")
     List<String> obtenerCategorias();
 }

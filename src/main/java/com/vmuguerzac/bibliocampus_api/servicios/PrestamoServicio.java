@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.vmuguerzac.bibliocampus_api.dto.PrestamoRespuesta;
@@ -13,6 +14,7 @@ import com.vmuguerzac.bibliocampus_api.modelo.Prestamo;
 import com.vmuguerzac.bibliocampus_api.repositorio.LibroRepositorio;
 import com.vmuguerzac.bibliocampus_api.repositorio.PrestamoRepositorio;
 
+@Service 
 public class PrestamoServicio {
     private final LibroRepositorio libroRepositorio;
     private final PrestamoRepositorio prestamoRepositorio;

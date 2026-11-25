@@ -17,14 +17,18 @@ public class LibroServicio {
         this.libroRepositorio = instancia;
     }
 
-    // ListarLibros
-    public List<Libro> listarLibros(){
-        return libroRepositorio.findAll(); // SELECT .... FROM LIBROS;
+    public List<Libro> listarLibros(String q, List<String> categorias, boolean soloDisponible, String orden){
+        return libroRepositorio.buscarLibro(q, categorias, soloDisponible, orden);
     }
+    
     // BuscarPorId
     // Regla de Negocio: Si el libro no existe lanzar un 404 (NOT FOUND)
     public Libro obtenerPorId(Long id){
         return libroRepositorio.findById(id)
             .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "El libro no existe"));
+    }
+
+    public List<String> obtenerCategorias(){
+        return libroRepositorio.obtenerCategorias();
     }
 }

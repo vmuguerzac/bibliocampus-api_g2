@@ -19,13 +19,16 @@ public class DatosPrueba implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("###### Inicia la prueba de guardar");
-        libroRepositorio.save(new Libro(null, "Effective Java", "Joshua Bloch", "Java", 2018, "", 5));
-        libroRepositorio.save(new Libro(null, "Spring in Action", "Craig Walls", "Spring", 2022, "", 0));
-        libroRepositorio.save(new Libro(null, "Design Patterns", "Gamma, Helm, Johnson, Vlissides", "Patrones de diseño", 1994, "", 2));
-        libroRepositorio.save(new Libro(null, "Refactoring", "Martin Fowler", "Buenas prácticas", 2018, "", 0));
-        libroRepositorio.save(new Libro(null, "The Pragmatic Programmer", "Hunt y Thomas", "Buenas prácticas", 2019, "", 4));
-        System.out.println("###### Finaliza la prueba de guardar");
+        // System.out.println("###### Inicia la prueba de guardar");
+        // libroRepositorio.save(new Libro(null, "Effective Java", "Joshua Bloch", "Java", 2018, "", 5));
+        // libroRepositorio.save(new Libro(null, "Spring in Action", "Craig Walls", "Spring", 2022, "", 0));
+        // libroRepositorio.save(new Libro(null, "Design Patterns", "Gamma, Helm, Johnson, Vlissides", "Patrones de diseño", 1994, "", 2));
+        // libroRepositorio.save(new Libro(null, "Refactoring", "Martin Fowler", "Buenas prácticas", 2018, "", 0));
+        // libroRepositorio.save(new Libro(null, "The Pragmatic Programmer", "Hunt y Thomas", "Buenas prácticas", 2019, "", 4));
+        // System.out.println("###### Finaliza la prueba de guardar");
+        libroRepositorio.findTop3ByOrderByCopiasDisponiblesDesc().forEach((l)->
+            System.out.println(l.getTitulo() + " " + l.getCopiasDisponibles())
+        );
     }
     
 }

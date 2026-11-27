@@ -1,16 +1,25 @@
 package com.vmuguerzac.bibliocampus_api.controladores;
 
+import java.net.URI;
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.vmuguerzac.bibliocampus_api.dto.LibroSolicitud;
 import com.vmuguerzac.bibliocampus_api.modelo.Libro;
 import com.vmuguerzac.bibliocampus_api.servicios.LibroServicio;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @RestController 
@@ -22,6 +31,15 @@ public class LibroControlador {
     public LibroControlador(LibroServicio instancia){
         this.libroServicio = instancia;
     }
+
+    // POST
+    @PostMapping
+    public ResponseEntity<Libro> crearLibro(@Valid @RequestBody LibroSolicitud datosLibro) {
+        Libro creado = libroServicio.crearLibro(datosLibro);
+        URI ubicacion = URI.create("/api/libros/" + creado.getId());
+        return ResponseEntity.created(ubicacion).body(creado); // 201 Created + Location
+    }
+    
 
     @GetMapping("/{id}")
     public Libro obtenerPorId(@PathVariable("id") Long id) {

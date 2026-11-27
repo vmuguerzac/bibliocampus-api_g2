@@ -20,7 +20,7 @@ public class LibroBusquedaImpl implements LibroBusqueda {
         Map<String, Object> parametros = new HashMap<>();
 
         if(q != null && !q.isBlank()){
-            jpql.append(" AND (LOWER(l.titulo) LIKE :q) OR LOWER(l.autor) LIKE :q");
+            jpql.append(" AND (LOWER(l.titulo) LIKE :q OR LOWER(l.autor) LIKE :q)");
             parametros.put("q", "%" + q.trim().toLowerCase() + "%" );
         }
         if(categorias != null && !categorias.isEmpty()){

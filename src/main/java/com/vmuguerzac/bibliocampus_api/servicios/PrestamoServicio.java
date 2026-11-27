@@ -48,5 +48,11 @@ public class PrestamoServicio {
     public List<PrestamoRespuesta> listarTodosPrestamos(){
         return prestamoRepositorio.obtenerTodosLosPrestamos().stream().map(PrestamoRespuesta::de).toList();
     }
+
+    public List<PrestamoRespuesta> listarMios(Long usuarioId){
+        return prestamoRepositorio.obtenerPrestamosPorUsuario(usuarioId).stream()
+                                    .map(PrestamoRespuesta::de)
+                                    .toList();
+    }
     
 }

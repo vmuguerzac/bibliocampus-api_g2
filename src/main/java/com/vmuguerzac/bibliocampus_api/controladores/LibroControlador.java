@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController 
 @RequestMapping("/api/libros")
-@CrossOrigin(origins = "http://localhost:4200")
 public class LibroControlador {
     private final LibroServicio libroServicio;
 

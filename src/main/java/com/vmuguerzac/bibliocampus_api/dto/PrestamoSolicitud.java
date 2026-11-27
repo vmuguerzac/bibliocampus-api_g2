@@ -1,3 +1,8 @@
 package com.vmuguerzac.bibliocampus_api.dto;
 
-public record PrestamoSolicitud(Long libroId){}
+import jakarta.validation.constraints.NotNull;
+
+public record PrestamoSolicitud(
+    @NotNull(message = "El libro es obligatorio") 
+    Long libroId
+){}
